@@ -3,6 +3,9 @@
 namespace TPChallengeBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use TPChallengeBundle\Traits\TimestampableTrait;
+
+
 
 /**
  * Score
@@ -12,6 +15,9 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Score
 {
+
+    use TimestampableTrait;
+
     /**
      * @var int
      *
