@@ -22,6 +22,7 @@ class ScoreType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
+            ->add('nickName', TextType::class, array('required' => true))
             ->add('firstName', TextType::class, array('required' => true))
             ->add('lastName', TextType::class, array('required' => true))
             ->add('email', EmailType::class, array('required' => true))

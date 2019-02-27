@@ -31,6 +31,14 @@ class Score
     /**
      * @var string
      *
+     * @ORM\Column(name="nickName", type="string", length=255)
+     */
+    private $nickName;
+
+
+    /**
+     * @var string
+     *
      * @ORM\Column(name="firstName", type="string", length=255)
      */
     private $firstName;
@@ -103,6 +111,25 @@ class Score
     public function getId()
     {
         return $this->id;
+    }
+
+
+    /**
+     * @return string
+     */
+    public function getNickName()
+    {
+        return $this->nickName;
+    }
+
+    /**
+     * @param string $nickName
+     */
+    public function setNickName( $nickName)
+    {
+        $this->nickName = $nickName;
+
+        return $this;
     }
 
     /**
