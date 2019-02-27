@@ -1,6 +1,7 @@
 tp_challenge:
-    resource: "@TPChallengeBundle/Resources/config/routing.xml"
-    prefix:   /
+    resource: '@TPChallengeBundle/Controller/ApiController.php'
+    type: rest
+    prefix: /api
 
 app:
     resource: '@AppBundle/Controller/'
