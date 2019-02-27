@@ -3,6 +3,6 @@ tp_challenge:
     type: rest
     prefix: /api
 
-app:
-    resource: '@AppBundle/Controller/'
+tp_challenge_html:
+    resource: '@TPChallengeBundle/Controller/HtmlController.php'
     type: annotation
