@@ -12,6 +12,7 @@ use TPChallengeBundle\Traits\TimestampableTrait;
  *
  * @ORM\Table(name="score")
  * @ORM\Entity(repositoryClass="TPChallengeBundle\Repository\ScoreRepository")
+ * @ORM\HasLifecycleCallbacks()
  */
 class Score
 {
@@ -68,6 +69,30 @@ class Score
      * @ORM\Column(name="whitoutFrontend", type="boolean", nullable=true)
      */
     private $whitoutFrontend;
+
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="uniqueId", type="string", nullable=false)
+     */
+    private $uniqueId;
+
+    /**
+     * @return string
+     */
+    public function getUniqueId(): string
+    {
+        return $this->uniqueId;
+    }
+
+    /**
+     * @param string $uniqueId
+     */
+    public function setUniqueId(string $uniqueId): void
+    {
+        $this->uniqueId = $uniqueId;
+    }
 
 
     /**
@@ -223,5 +248,19 @@ class Score
     {
         return $this->whitoutFrontend;
     }
+
+
+
+    /**
+     * @ORM\PrePersist
+     */
+    public function setUniqueIdValue()
+    {
+        $this->uniqueId=uniqid();
+
+    }
+
+
+
 }
 
