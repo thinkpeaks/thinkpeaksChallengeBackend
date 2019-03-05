@@ -28,6 +28,8 @@ class ScoreType extends AbstractType
             ->add('email', EmailType::class, array('required' => true))
             ->add('score', IntegerType::class, array('required' => true))
             ->add('isSpecialGuest', CheckboxType::class, array('required' => false))
+            ->add('token', TextType::class, array('required' => true,'mapped'=>false))
+
 
         ;
     }
