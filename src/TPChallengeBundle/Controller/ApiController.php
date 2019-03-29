@@ -180,6 +180,40 @@ class ApiController extends FOSRestController
     }
 
 
+
+
+
+    /**
+     * Add extra points using custom secret endpoint.
+     *
+     * @Get("/score/extra/{base64email}")
+     *
+     * @return \FOS\RestBundle\View\View
+     *
+     * @param Request $request the request object
+     * @param string $email the person email
+     *
+     */
+    public function getScoreExtraAction(Request $request, $base64email)
+    {
+
+
+        $em = $this->getDoctrine()->getManager();
+
+        $scores = $this->getDoctrine()->getRepository('TPChallengeBundle:Score')->findByUniqueId($uniqueId);
+
+        if ($scores === null) {
+            throw $this->createNotFoundException("No participation found for this uniqueId.");
+        }
+
+
+        return $this->view($scores);
+
+
+        // ... return a JSON response with the post
+    }
+
+
     /**
      * Get 10 most High scores
      *
