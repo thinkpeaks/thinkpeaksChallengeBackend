@@ -6,7 +6,6 @@ use Doctrine\ORM\Mapping as ORM;
 use TPChallengeBundle\Traits\TimestampableTrait;
 
 
-
 /**
  * Score
  *
@@ -80,6 +79,14 @@ class Score
 
 
     /**
+     * @var bool
+     *
+     * @ORM\Column(name="isArchived", type="boolean", nullable=false)
+     */
+    private $isArchived = false;
+
+
+    /**
      * @var string
      *
      * @ORM\Column(name="uniqueId", type="string", nullable=false)
@@ -89,7 +96,7 @@ class Score
     /**
      * @return string
      */
-    public function getUniqueId(): string
+    public function getUniqueId()
     {
         return $this->uniqueId;
     }
@@ -97,7 +104,7 @@ class Score
     /**
      * @param string $uniqueId
      */
-    public function setUniqueId(string $uniqueId): void
+    public function setUniqueId(string $uniqueId)
     {
         $this->uniqueId = $uniqueId;
     }
@@ -125,7 +132,7 @@ class Score
     /**
      * @param string $nickName
      */
-    public function setNickName( $nickName)
+    public function setNickName($nickName)
     {
         $this->nickName = $nickName;
 
@@ -276,6 +283,21 @@ class Score
         return $this->whitoutFrontend;
     }
 
+    /**
+     * @return bool
+     */
+    public function isArchived()
+    {
+        return $this->isArchived;
+    }
+
+    /**
+     * @param bool $isArchived
+     */
+    public function setIsArchived($isArchived)
+    {
+        $this->isArchived = $isArchived;
+    }
 
 
     /**
@@ -283,10 +305,9 @@ class Score
      */
     public function setUniqueIdValue()
     {
-        $this->uniqueId=uniqid();
+        $this->uniqueId = uniqid();
 
     }
-
 
 
 }

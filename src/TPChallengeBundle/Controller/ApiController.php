@@ -180,13 +180,10 @@ class ApiController extends FOSRestController
     }
 
 
-
-
-
     /**
      * Add extra points using custom secret endpoint.
      *
-     * @Get("/score/extra/{base64email}")
+     * @Get("/score/extra/{base64email}/{magicToken}")
      *
      * @return \FOS\RestBundle\View\View
      *
@@ -194,23 +191,35 @@ class ApiController extends FOSRestController
      * @param string $email the person email
      *
      */
-    public function getScoreExtraAction(Request $request, $base64email)
+    public function getScoreExtraAction(Request $request, $base64email, $magicToken)
     {
 
 
         $em = $this->getDoctrine()->getManager();
 
-        $scores = $this->getDoctrine()->getRepository('TPChallengeBundle:Score')->findByUniqueId($uniqueId);
+        $email = base64_decode($base64email);
 
-        if ($scores === null) {
+
+        $queryBuilder = $em->createQueryBuilder();
+
+
+        if ($magicToken == hash('sha512', $email . "cocoLapin")) {
+
+            $em->createQuery('
+    UPDATE TPChallengeBundle\Entity\Score s
+    SET s.isArchived = 1,s.whitoutFrontend=1,s.score=s.score+2000
+    WHERE s.email=:email AND s.whitoutFrontend IS NULL
+')
+                ->execute(array('email' => $email));
+
+            return $this->view(array("gg" => 'points added for email'));
+
+        } else {
             throw $this->createNotFoundException("No participation found for this uniqueId.");
+
         }
 
 
-        return $this->view($scores);
-
-
-        // ... return a JSON response with the post
     }
 
 
@@ -234,8 +243,19 @@ class ApiController extends FOSRestController
 
         $repository = $this->getDoctrine()->getRepository(Score::class);
 
-        $scores = $repository->findBy(array(), array('score' => 'DESC'), 10);
+        //$scores = $repository->findBy(array(), array('score' => 'DESC'), 10);
 
+
+        $entityManager = $this->getDoctrine()->getManager();
+
+        $query = $entityManager->createQuery(
+            'SELECT s
+    FROM TPChallengeBundle:Score s
+    WHERE s.isArchived != :bool
+    ORDER BY s.score DESC'
+        )->setParameter('bool', true);
+
+        $scores = $query->getResult();
 
         if ($scores === null) {
             throw $this->createNotFoundException("No participation found for this uniqueId.");
