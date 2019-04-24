@@ -252,7 +252,8 @@ class ApiController extends FOSRestController
             'SELECT s
     FROM TPChallengeBundle:Score s
     WHERE s.isArchived != :bool
-    ORDER BY s.score DESC'
+    ORDER BY s.score DESC
+    LIMIT 10'
         )->setParameter('bool', true);
 
         $scores = $query->getResult();
