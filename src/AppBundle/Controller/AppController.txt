@@ -1,0 +1,11 @@
+<?php
+
+namespace TPChallengeBundle\Controller;
+
+use FOS\RestBundle\Controller\FOSRestController;
+
+
+class AppController extends FOSRestController
+{
+
+}

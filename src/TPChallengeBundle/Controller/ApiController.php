@@ -117,6 +117,7 @@ class ApiController extends FOSRestController
 
         $repository = $this->getDoctrine()->getRepository('TPChallengeBundle:Score');
         $lastscore = $repository->findBy(array('email' => $email), array('id' => 'DESC'), 1);
+        $uniqueId = "new";
 
         if ($lastscore === null) {
             $uniqueId = "new";

@@ -1,16 +1,12 @@
 # Think Peaks Asteroid Challenge	
 Hi !
 Welcome to Think Peaks asteroid challenge.
-The challenge is simple: Get the higest points to win a Nintendo classic Mini.
 
 ## There is no such challenge without rules
 - Explode Asteroids to gain points
 - Points received depends on asteroid size (the smaller the higher)
-- You will lose 5 points for every 20 lost bullets shooted
-- Special tricks may apply in the game (inspect thinkpeaks.com)
 - The person with the highest score will win the challenge 
 - You have the right to cheat
-- Challenge end on 8 march 2019 at 09:00 Brussels Time
 
 # About the code source.
 
@@ -32,13 +28,38 @@ Pull request are accepted for sure !
 
 With composer like a simple symfony project.
 
+```
+git clone https://github.com/thinkpeaks/thinkpeaksChallengeBackend
+cd thinkpeaksChallengeBackend
+mkdir src/AppBundle/Controller/
+composer install
+php bin/console doctrine:schema:update --force  --env=prod
+```
+
+Note that the frontend secret should be the same that in the Frontend sources.
+
+#### Running the application
+If you use PHP-FPM you can just run 
+```
+php bin/console server:start         
+[OK] Server listening on http://127.0.0.1:8001     
+```
+Otherwise you will have to create a virtual server on your application server.
+
+### Challenges
+
+ - **Challenge A**: Hack the game and make the highest score here: https://challenge.thinkpeaks.com/
+ - **Challenge B**: Write Tests
+ - **Challenge C**: Integrate PushBullet
+ - **Challenge E**: Send an email to challenge@thinkpeaks.com each time a new email play the game
+ - **Challenge F**: Publish RestFul Api Doc on backend api/doc endpoint
+ - **Challenge G**: Develop an endpoint that lists game scores (and some info, like the last game played) per user
+ - **Challenge H**: Develop /admin/ban endpoint that allows to ban specific email address
+ - **Challenge I**: Migrate to the last Symfony Version
+ - **Challenge J**: Surprise us !
 
 
-### Todos
-
- - Write  Tests
- - Develop HTML controller for fancy infos
- - publish RestFul Api Doc
+ 
  
 ### Credits
 Think Peaks 
