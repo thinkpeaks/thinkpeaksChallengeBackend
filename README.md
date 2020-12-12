@@ -49,6 +49,7 @@ Otherwise you will have to create a virtual server on your application server.
 ### Challenges
 
  - **Challenge A**: Hack the game and make the highest score here: https://challenge.thinkpeaks.com/
+   * Done : ![Hack3d](/challenge/step1-done.png) 
  - **Challenge B**: Write Tests
  - **Challenge C**: Integrate PushBullet
  - **Challenge E**: Send an email to challenge@thinkpeaks.com each time a new email play the game
