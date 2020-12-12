@@ -1,6 +1,6 @@
 <?php
 
-namespace TPChallengeBundle;
+namespace App\TPChallengeBundle;
 
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 

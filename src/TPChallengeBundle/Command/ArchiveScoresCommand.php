@@ -6,7 +6,7 @@
  * Time: 15:13
  */
 
-namespace TPChallengeBundle\Command;
+namespace App\TPChallengeBundle\Command;
 
 
 use Symfony\Component\Console\Command\Command;

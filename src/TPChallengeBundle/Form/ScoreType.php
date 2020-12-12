@@ -1,6 +1,6 @@
 <?php
 
-namespace TPChallengeBundle\Form;
+namespace App\TPChallengeBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
@@ -42,7 +42,7 @@ class ScoreType extends AbstractType
         parent::configureOptions($resolver);
 
         $resolver->setDefaults(array(
-            'data_class' => 'TPChallengeBundle\Entity\Score',
+            'data_class' => 'App\TPChallengeBundle\Entity\Score',
             'csrf_protection'   => false
         ));
     }

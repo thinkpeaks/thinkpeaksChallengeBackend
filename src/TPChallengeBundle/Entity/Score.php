@@ -1,16 +1,16 @@
 <?php
 
-namespace TPChallengeBundle\Entity;
+namespace App\TPChallengeBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use TPChallengeBundle\Traits\TimestampableTrait;
+use App\TPChallengeBundle\Traits\TimestampableTrait;
 
 
 /**
  * Score
  *
  * @ORM\Table(name="score")
- * @ORM\Entity(repositoryClass="TPChallengeBundle\Repository\ScoreRepository")
+ * @ORM\Entity(repositoryClass="App\TPChallengeBundle\Repository\ScoreRepository")
  * @ORM\HasLifecycleCallbacks()
  */
 class Score

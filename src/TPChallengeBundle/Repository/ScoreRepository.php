@@ -1,6 +1,6 @@
 <?php
 
-namespace TPChallengeBundle\Repository;
+namespace App\TPChallengeBundle\Repository;
 
 /**
  * ScoreRepository

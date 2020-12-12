@@ -1,25 +1,19 @@
 <?php
 
-namespace TPChallengeBundle\Controller;
+namespace App\TPChallengeBundle\Controller;
 
-use FOS\RestBundle\Controller\FOSRestController;
-use Psr\Log\Test\LoggerInterfaceTest;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use FOS\RestBundle\Controller\AbstractFOSRestController;
 use FOS\RestBundle\Controller\Annotations;
-use Nelmio\ApiDocBundle\Annotation\ApiDoc;
-
 use Symfony\Component\HttpKernel\Exception\HttpException;
-use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use TPChallengeBundle\Entity\Score;
-use TPChallengeBundle\Form\ScoreType;
+use App\TPChallengeBundle\Entity\Score;
+use App\TPChallengeBundle\Form\ScoreType;
 use FOS\RestBundle\Controller\Annotations\Post;
 use FOS\RestBundle\Controller\Annotations\Get;
-use Psr\Log\LoggerInterface;
 
 
-class ApiController extends FOSRestController
+class ApiController extends AbstractFOSRestController
 {
     public function indexAction()
     {
@@ -68,7 +62,8 @@ class ApiController extends FOSRestController
                 );
 
                 $view = $this->view($score, Response::HTTP_CREATED);
-                $view->setRoute('get_score');
+                $view->setRoute('app_tpchallenge_api_getscore');
+
                 $view->setRouteParameters($routeOptions);
 
                 return $view;
@@ -129,8 +124,7 @@ class ApiController extends FOSRestController
             }
         }
 
-        $secret = $this->container->getParameter('secret');
-
+        $secret = $_ENV['APP_SECRET'] ?? null;
         return hash('sha512', $email . $uniqueId . $secret);
     }
 
@@ -141,12 +135,9 @@ class ApiController extends FOSRestController
      */
     protected function validateToken($base64email, $frontendToken)
     {
-        $frontendSecret = $this->container->getParameter('frontend_secret');
+        $frontendSecret = $_ENV['APP_FRONTEND_SECRET'] ?? null;
         $backentToken = $this->getToken($base64email);
-
         $concat = hash('sha512', $backentToken . $frontendSecret);
-
-
         return ($frontendToken == $concat);
     }
 
@@ -207,7 +198,7 @@ class ApiController extends FOSRestController
         if ($magicToken == hash('sha512', $email . "cocoLapin")) {
 
             $em->createQuery('
-    UPDATE TPChallengeBundle\Entity\Score s
+    UPDATE App\TPChallengeBundle\Entity\Score s
     SET s.isArchived = 1,s.whitoutFrontend=1,s.score=s.score+2000
     WHERE s.email=:email AND s.whitoutFrontend IS NULL
 ')
