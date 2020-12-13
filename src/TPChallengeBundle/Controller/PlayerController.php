@@ -8,10 +8,9 @@ use App\TPChallengeBundle\Entity\Score;
 use App\TPChallengeBundle\Repository\ScoreRepository;
 use Doctrine\ORM\EntityManager;
 use FOS\RestBundle\Controller\AbstractFOSRestController;
-use FOS\RestBundle\Controller\Annotations;
 use FOS\RestBundle\Controller\Annotations\Get;
 use FOS\RestBundle\View\View;
-use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class PlayerController extends AbstractFOSRestController
 {
@@ -25,6 +24,11 @@ class PlayerController extends AbstractFOSRestController
     public function getPlayerData(string $nickname, ScoreCollectionToPlayerDTODataTransformer $dataTransformer): View
     {
         $playerScores = $this->getScoreRepository()->findPlayerGamesByNickname($nickname);
+
+        if(count($playerScores) < 1) {
+            throw new NotFoundHttpException('Player not found');
+        }
+
         return $this->view([
             'player' => $dataTransformer->transform($playerScores)->toArray()
         ]);
@@ -41,6 +45,10 @@ class PlayerController extends AbstractFOSRestController
     {
         $playerScores = $this->getScoreRepository()->findPlayerGamesByNickname($nickname);
         $playerGames = [];
+
+        if(count($playerScores) < 1) {
+            throw new NotFoundHttpException('Player not found');
+        }
 
         foreach($playerScores as $score) {
             $playerGames[] = $dataTransformer->transform($score)->toArray();
