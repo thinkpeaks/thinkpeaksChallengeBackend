@@ -96,6 +96,9 @@
     "monolog/monolog": {
         "version": "2.1.1"
     },
+    "myclabs/deep-copy": {
+        "version": "1.10.2"
+    },
     "nelmio/api-doc-bundle": {
         "version": "3.0",
         "recipe": {
@@ -127,6 +130,12 @@
     "ocramius/proxy-manager": {
         "version": "2.2.3"
     },
+    "phar-io/manifest": {
+        "version": "2.0.1"
+    },
+    "phar-io/version": {
+        "version": "3.0.3"
+    },
     "php": {
         "version": "7.2"
     },
@@ -138,6 +147,38 @@
     },
     "phpdocumentor/type-resolver": {
         "version": "1.4.0"
+    },
+    "phpspec/prophecy": {
+        "version": "1.12.1"
+    },
+    "phpunit/php-code-coverage": {
+        "version": "7.0.14"
+    },
+    "phpunit/php-file-iterator": {
+        "version": "2.0.3"
+    },
+    "phpunit/php-text-template": {
+        "version": "1.2.1"
+    },
+    "phpunit/php-timer": {
+        "version": "2.1.3"
+    },
+    "phpunit/php-token-stream": {
+        "version": "3.1.2"
+    },
+    "phpunit/phpunit": {
+        "version": "4.7",
+        "recipe": {
+            "repo": "github.com/symfony/recipes",
+            "branch": "master",
+            "version": "4.7",
+            "ref": "477e1387616f39505ba79715f43f124836020d71"
+        },
+        "files": [
+            ".env.test",
+            "phpunit.xml.dist",
+            "tests/bootstrap.php"
+        ]
     },
     "psr/cache": {
         "version": "1.0.1"
@@ -154,6 +195,42 @@
     "psr/log": {
         "version": "1.1.3"
     },
+    "sebastian/code-unit-reverse-lookup": {
+        "version": "1.0.2"
+    },
+    "sebastian/comparator": {
+        "version": "3.0.3"
+    },
+    "sebastian/diff": {
+        "version": "3.0.3"
+    },
+    "sebastian/environment": {
+        "version": "4.2.4"
+    },
+    "sebastian/exporter": {
+        "version": "3.1.3"
+    },
+    "sebastian/global-state": {
+        "version": "3.0.1"
+    },
+    "sebastian/object-enumerator": {
+        "version": "3.0.4"
+    },
+    "sebastian/object-reflector": {
+        "version": "1.1.2"
+    },
+    "sebastian/recursion-context": {
+        "version": "3.0.1"
+    },
+    "sebastian/resource-operations": {
+        "version": "2.0.2"
+    },
+    "sebastian/type": {
+        "version": "1.1.4"
+    },
+    "sebastian/version": {
+        "version": "2.0.1"
+    },
     "sensio/framework-extra-bundle": {
         "version": "5.2",
         "recipe": {
@@ -165,9 +242,6 @@
         "files": [
             "config/packages/sensio_framework_extra.yaml"
         ]
-    },
-    "swiftmailer/swiftmailer": {
-        "version": "v6.2.4"
     },
     "symfony/asset": {
         "version": "v5.2.0"
@@ -281,6 +355,15 @@
             "src/Controller/.gitignore",
             "src/Kernel.php"
         ]
+    },
+    "symfony/google-mailer": {
+        "version": "4.4",
+        "recipe": {
+            "repo": "github.com/symfony/recipes",
+            "branch": "master",
+            "version": "4.4",
+            "ref": "f8fd4ddb9b477510f8f4bce2b9c054ab428c0120"
+        }
     },
     "symfony/http-client": {
         "version": "v5.2.0"
@@ -458,20 +541,6 @@
     "symfony/string": {
         "version": "v5.2.0"
     },
-    "symfony/swiftmailer-bundle": {
-        "version": "2.5",
-        "recipe": {
-            "repo": "github.com/symfony/recipes",
-            "branch": "master",
-            "version": "2.5",
-            "ref": "ae4d22af30bbd484506bc1817c5a3ef72c855b93"
-        },
-        "files": [
-            "config/packages/dev/swiftmailer.yaml",
-            "config/packages/swiftmailer.yaml",
-            "config/packages/test/swiftmailer.yaml"
-        ]
-    },
     "symfony/test-pack": {
         "version": "v1.0.7"
     },
@@ -549,6 +618,9 @@
     },
     "symfony/yaml": {
         "version": "v5.2.0"
+    },
+    "theseer/tokenizer": {
+        "version": "1.2.0"
     },
     "twig/extra-bundle": {
         "version": "v3.1.1"
