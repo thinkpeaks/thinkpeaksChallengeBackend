@@ -65,6 +65,6 @@ class ScoreCollectionToPlayerDTODataTransformer implements \Symfony\Component\Fo
      */
     public function reverseTransform($value)
     {
-        throw new \RuntimeException('Reverse transform is not supported.');
+        throw new \RuntimeException('Reverse transform is not yet supported. We should use the nickname to retrieve the data from DB.');
     }
 }

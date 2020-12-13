@@ -31,4 +31,5 @@ services:
     # please note that last definitions always *replace* previous ones
 
     App\TPChallengeBundle\DataTransformer\ScoreCollectionToPlayerDTODataTransformer: ~
+    App\TPChallengeBundle\DataTransformer\ScoreEntityToGameDTODataTransformer: ~
 

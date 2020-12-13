@@ -3,6 +3,7 @@
 namespace App\TPChallengeBundle\Controller;
 
 use App\TPChallengeBundle\DataTransformer\ScoreCollectionToPlayerDTODataTransformer;
+use App\TPChallengeBundle\DataTransformer\ScoreEntityToGameDTODataTransformer;
 use App\TPChallengeBundle\Entity\Score;
 use App\TPChallengeBundle\Repository\ScoreRepository;
 use Doctrine\ORM\EntityManager;
@@ -16,21 +17,38 @@ class PlayerController extends AbstractFOSRestController
 {
     /**
      * Get global score stats
-     * @Annotations\View(statusCode = Response::HTTP_BAD_REQUEST)
      * @Get("/players/{nickname}")
      * @param string $nickname
      * @param ScoreCollectionToPlayerDTODataTransformer $dataTransformer
      * @return View
      */
-    public function getScoreStats(string $nickname, ScoreCollectionToPlayerDTODataTransformer $dataTransformer): View
+    public function getPlayerData(string $nickname, ScoreCollectionToPlayerDTODataTransformer $dataTransformer): View
     {
         $playerScores = $this->getScoreRepository()->findPlayerGamesByNickname($nickname);
-        return $this->view(
-            $dataTransformer
-                ->transform($playerScores)
-                ->toArray(),
-            200
-        );
+        return $this->view([
+            'player' => $dataTransformer->transform($playerScores)->toArray()
+        ]);
+    }
+
+    /**
+     * Get list of games for a giver nickname
+     * @Get("/players/{nickname}/games")
+     * @param string $nickname
+     * @param ScoreEntityToGameDTODataTransformer $dataTransformer
+     * @return View
+     */
+    public function getPlayerGames(string $nickname, ScoreEntityToGameDTODataTransformer $dataTransformer): View
+    {
+        $playerScores = $this->getScoreRepository()->findPlayerGamesByNickname($nickname);
+        $playerGames = [];
+
+        foreach($playerScores as $score) {
+            $playerGames[] = $dataTransformer->transform($score)->toArray();
+        }
+
+        return $this->view([
+            'games' => $playerGames
+        ]);
     }
 
     /**
