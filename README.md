@@ -61,8 +61,20 @@ Otherwise you will have to create a virtual server on your application server.
  - **Challenge J**: Surprise us !
 
 
- 
- 
+### Run tests
+
+Make runtests bin executable 
+
+```
+chmod +x ./bin/runtests
+```
+
+Then run the tests: 
+
+```
+./bin/runtests
+```
+
 ### Credits
 Think Peaks 
 
