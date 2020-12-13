@@ -2,7 +2,7 @@
 
 namespace App\TPChallengeBundle\DTO;
 
-class GameDTO implements DTOInterface
+class Game implements DTOInterface
 {
     /** @var string */
     private $uniqueId;
@@ -18,9 +18,9 @@ class GameDTO implements DTOInterface
 
     /**
      * @param string $uniqueId
-     * @return GameDTO
+     * @return Game
      */
-    public function setUniqueId(string $uniqueId): GameDTO
+    public function setUniqueId(string $uniqueId): Game
     {
         $this->uniqueId = $uniqueId;
         return $this;
@@ -28,9 +28,9 @@ class GameDTO implements DTOInterface
 
     /**
      * @param \DateTimeImmutable $date
-     * @return GameDTO
+     * @return Game
      */
-    public function setDate(\DateTimeImmutable $date): GameDTO
+    public function setDate(\DateTimeImmutable $date): Game
     {
         $this->date = $date;
         return $this;
@@ -38,9 +38,9 @@ class GameDTO implements DTOInterface
 
     /**
      * @param string $playerNickname
-     * @return GameDTO
+     * @return Game
      */
-    public function setPlayerNickname(string $playerNickname): GameDTO
+    public function setPlayerNickname(string $playerNickname): Game
     {
         $this->playerNickname = $playerNickname;
         return $this;
@@ -48,9 +48,9 @@ class GameDTO implements DTOInterface
 
     /**
      * @param int $score
-     * @return GameDTO
+     * @return Game
      */
-    public function setScore(int $score): GameDTO
+    public function setScore(int $score): Game
     {
         $this->score = $score;
         return $this;

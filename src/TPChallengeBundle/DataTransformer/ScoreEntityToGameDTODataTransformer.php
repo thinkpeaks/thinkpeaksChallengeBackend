@@ -3,7 +3,7 @@
 
 namespace App\TPChallengeBundle\DataTransformer;
 
-use App\TPChallengeBundle\DTO\GameDTO;
+use App\TPChallengeBundle\DTO\Game;
 use App\TPChallengeBundle\DTO\Player;
 use App\TPChallengeBundle\Entity\Score;
 
@@ -17,7 +17,7 @@ class ScoreEntityToGameDTODataTransformer implements \Symfony\Component\Form\Dat
      */
     public function transform($score)
     {
-        $game = new GameDTO();
+        $game = new Game();
         $game
             ->setUniqueId($score->getUniqueId())
             ->setDate(\DateTimeImmutable::createFromMutable($score->getCreatedAt()))
