@@ -1,8 +1,0 @@
-tp_challenge:
-    resource: '@TPChallengeBundle/Controller/ApiController.php'
-    type: rest
-    prefix: /api
-
-tp_challenge_html:
-    resource: '@TPChallengeBundle/Controller/HtmlController.php'
-    type: annotation

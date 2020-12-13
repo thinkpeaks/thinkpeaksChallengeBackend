@@ -1,6 +1,8 @@
 <?php
 
-namespace TPChallengeBundle\Repository;
+namespace App\TPChallengeBundle\Repository;
+
+use Doctrine\ORM\Query;
 
 /**
  * ScoreRepository
@@ -10,4 +12,25 @@ namespace TPChallengeBundle\Repository;
  */
 class ScoreRepository extends \Doctrine\ORM\EntityRepository
 {
+    /**
+     * @param $nickname
+     * @return int|mixed|string
+     */
+    public function findPlayerGamesByNickname($nickname)
+    {
+        return $this
+            ->getPlayerByNicknameQueryBuilder($nickname)
+            ->orderBy('s.createdAt','DESC')
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+
+    protected function getPlayerByNicknameQueryBuilder(string $nickname)
+    {
+        return $this->createQueryBuilder('s')
+            ->andWhere('s.nickName = :nickname')
+            ->setParameter('nickname', $nickname)
+        ;
+    }
 }

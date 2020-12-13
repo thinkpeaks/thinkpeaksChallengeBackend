@@ -1,7 +1,7 @@
 <?php
 
 
-namespace TPChallengeBundle\Traits;
+namespace App\TPChallengeBundle\Traits;
 
 use Doctrine\ORM\Mapping as ORM;
 
@@ -32,7 +32,7 @@ trait TimestampableTrait
             $this->updatedAt = new \DateTime();
         }
     }
-    
+
     /**
      * @ORM\PreUpdate
      */
@@ -40,7 +40,7 @@ trait TimestampableTrait
     {
         $this->updatedAt = new \DateTime();
     }
-    
+
     /**
      * Get createdAt
      *
@@ -50,7 +50,7 @@ trait TimestampableTrait
     {
         return $this->createdAt;
     }
-    
+
     /**
      * Set createdAt
      *
@@ -61,10 +61,10 @@ trait TimestampableTrait
     public function setCreatedAt($createdAt)
     {
         $this->createdAt = $createdAt;
-    
+
         return $this;
     }
-    
+
     /**
      * Get updatedAt
      *
@@ -74,7 +74,7 @@ trait TimestampableTrait
     {
         return $this->updatedAt;
     }
-    
+
     /**
      * Set updatedAt
      *
@@ -85,7 +85,7 @@ trait TimestampableTrait
     public function setUpdatedAt($updatedAt)
     {
         $this->updatedAt = $updatedAt;
-    
+
         return $this;
     }
 }

@@ -49,18 +49,34 @@ Otherwise you will have to create a virtual server on your application server.
 ### Challenges
 
  - **Challenge A**: Hack the game and make the highest score here: https://challenge.thinkpeaks.com/
+   * Done : [Hack3d](/challenge/step1-done.png)
  - **Challenge B**: Write Tests
+   * Done (unit tests + some integration test -> /api/players/* routes)
  - **Challenge C**: Integrate PushBullet
  - **Challenge E**: Send an email to challenge@thinkpeaks.com each time a new email play the game
  - **Challenge F**: Publish RestFul Api Doc on backend api/doc endpoint
  - **Challenge G**: Develop an endpoint that lists game scores (and some info, like the last game played) per user
+   * Done
  - **Challenge H**: Develop /admin/ban endpoint that allows to ban specific email address
  - **Challenge I**: Migrate to the last Symfony Version
+   * Done : [06d9e16](https://github.com/david-vde/thinkpeaksChallengeBackend/commit/06d9e16c2fcac5b45a9eee308108354ebbc825f2)
  - **Challenge J**: Surprise us !
 
 
- 
- 
+### Run tests
+
+Make runtests bin executable 
+
+```
+chmod +x ./bin/runtests
+```
+
+Then run the tests: 
+
+```
+./bin/runtests
+```
+
 ### Credits
 Think Peaks 
 

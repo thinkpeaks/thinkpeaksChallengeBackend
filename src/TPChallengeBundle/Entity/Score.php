@@ -1,16 +1,16 @@
 <?php
 
-namespace TPChallengeBundle\Entity;
+namespace App\TPChallengeBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use TPChallengeBundle\Traits\TimestampableTrait;
+use App\TPChallengeBundle\Traits\TimestampableTrait;
 
 
 /**
  * Score
  *
  * @ORM\Table(name="score")
- * @ORM\Entity(repositoryClass="TPChallengeBundle\Repository\ScoreRepository")
+ * @ORM\Entity(repositoryClass="App\TPChallengeBundle\Repository\ScoreRepository")
  * @ORM\HasLifecycleCallbacks()
  */
 class Score
@@ -96,17 +96,20 @@ class Score
     /**
      * @return string
      */
-    public function getUniqueId()
+    public function getUniqueId(): string
     {
         return $this->uniqueId;
     }
 
     /**
      * @param string $uniqueId
+     * @return Score
      */
-    public function setUniqueId(string $uniqueId)
+    public function setUniqueId(string $uniqueId): Score
     {
         $this->uniqueId = $uniqueId;
+
+        return $this;
     }
 
 
@@ -115,7 +118,7 @@ class Score
      *
      * @return int
      */
-    public function getId()
+    public function getId(): int
     {
         return $this->id;
     }
@@ -124,18 +127,18 @@ class Score
     /**
      * @return string
      */
-    public function getNickName()
+    public function getNickName(): string
     {
         return $this->nickName;
     }
 
     /**
      * @param string $nickName
+     * @return Score
      */
-    public function setNickName($nickName)
+    public function setNickName(string $nickName): Score
     {
         $this->nickName = $nickName;
-
         return $this;
     }
 
@@ -143,13 +146,11 @@ class Score
      * Set firstName
      *
      * @param string $firstName
-     *
      * @return Score
      */
-    public function setFirstName($firstName)
+    public function setFirstName(string $firstName): Score
     {
         $this->firstName = $firstName;
-
         return $this;
     }
 
@@ -158,7 +159,7 @@ class Score
      *
      * @return string
      */
-    public function getFirstName()
+    public function getFirstName(): string
     {
         return $this->firstName;
     }
@@ -167,10 +168,9 @@ class Score
      * Set lastName
      *
      * @param string $lastName
-     *
      * @return Score
      */
-    public function setLastName($lastName)
+    public function setLastName(string $lastName): Score
     {
         $this->lastName = $lastName;
 
@@ -182,7 +182,7 @@ class Score
      *
      * @return string
      */
-    public function getLastName()
+    public function getLastName(): string
     {
         return $this->lastName;
     }
@@ -191,10 +191,9 @@ class Score
      * Set email
      *
      * @param string $email
-     *
      * @return Score
      */
-    public function setEmail($email)
+    public function setEmail(string $email): Score
     {
         $this->email = $email;
 
@@ -206,7 +205,7 @@ class Score
      *
      * @return string
      */
-    public function getEmail()
+    public function getEmail(): string
     {
         return $this->email;
     }
@@ -215,13 +214,11 @@ class Score
      * Set score
      *
      * @param integer $score
-     *
      * @return Score
      */
-    public function setScore($score)
+    public function setScore($score): Score
     {
         $this->score = $score;
-
         return $this;
     }
 
@@ -230,7 +227,7 @@ class Score
      *
      * @return int
      */
-    public function getScore()
+    public function getScore(): int
     {
         return $this->score;
     }
@@ -242,10 +239,9 @@ class Score
      *
      * @return Score
      */
-    public function setIsSpecialGuest($isSpecialGuest)
+    public function setIsSpecialGuest($isSpecialGuest): Score
     {
         $this->isSpecialGuest = $isSpecialGuest;
-
         return $this;
     }
 
@@ -254,7 +250,7 @@ class Score
      *
      * @return bool
      */
-    public function getIsSpecialGuest()
+    public function getIsSpecialGuest(): bool
     {
         return $this->isSpecialGuest;
     }
@@ -266,10 +262,9 @@ class Score
      *
      * @return Score
      */
-    public function setWhitoutFrontend($whitoutFrontend)
+    public function setWhitoutFrontend(bool $whitoutFrontend): Score
     {
         $this->whitoutFrontend = $whitoutFrontend;
-
         return $this;
     }
 
@@ -278,7 +273,7 @@ class Score
      *
      * @return bool
      */
-    public function getWhitoutFrontend()
+    public function getWhitoutFrontend(): bool
     {
         return $this->whitoutFrontend;
     }
@@ -286,17 +281,19 @@ class Score
     /**
      * @return bool
      */
-    public function isArchived()
+    public function isArchived(): bool
     {
         return $this->isArchived;
     }
 
     /**
      * @param bool $isArchived
+     * @return Score
      */
-    public function setIsArchived($isArchived)
+    public function setIsArchived(bool $isArchived): Score
     {
         $this->isArchived = $isArchived;
+        return $this;
     }
 
 
@@ -306,7 +303,6 @@ class Score
     public function setUniqueIdValue()
     {
         $this->uniqueId = uniqid();
-
     }
 
 
