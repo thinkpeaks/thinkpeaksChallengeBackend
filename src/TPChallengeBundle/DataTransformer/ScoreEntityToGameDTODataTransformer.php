@@ -17,6 +17,10 @@ class ScoreEntityToGameDTODataTransformer implements \Symfony\Component\Form\Dat
      */
     public function transform($score)
     {
+        if(get_class($score) !== Score::class) {
+            throw new \InvalidArgumentException('Score class should be ' . Score::class);
+        }
+
         $game = new Game();
         $game
             ->setUniqueId($score->getUniqueId())

@@ -17,6 +17,10 @@ class ScoreCollectionToPlayerDTODataTransformer implements \Symfony\Component\Fo
      */
     public function transform($scores)
     {
+        if(!is_countable($scores)) {
+            throw new \InvalidArgumentException('scores param should be countable');
+        }
+
         $countScores = count($scores);
 
         if(count($scores) < 1) {
@@ -28,16 +32,23 @@ class ScoreCollectionToPlayerDTODataTransformer implements \Symfony\Component\Fo
         // Oldest data to define the createdDate of the player
         $oldestDate = $newestDate = $oldestScore = $newestScore = null;
         $highscore = $avgScore = 0;
+        $previousNickname = null;
 
         foreach($scores as $score) {
-
             if(get_class($score) !== Score::class) {
                 throw new \InvalidArgumentException('We can only transform object of type ' . Score::class);
             }
 
+            if(!is_null($previousNickname) && $previousNickname !== $score->getNickName()) {
+                throw new \InvalidArgumentException(
+                    'We shouldn\'t have different nicknames in the list, it concern only one player'
+                );
+            }
+
+            $previousNickname = $score->getNickName();
+
             if(is_null($oldestDate) || $oldestDate > $score->getCreatedAt()) {
                 $oldestDate = $score->getCreatedAt();
-                $oldestScore = $score;
             }
 
             if(is_null($newestDate) || $newestDate < $score->getCreatedAt()) {
