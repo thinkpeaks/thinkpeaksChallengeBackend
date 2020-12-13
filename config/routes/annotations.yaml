@@ -1,5 +1,5 @@
 controllers:
-    resource: ../../src/TPChallengeBundle/Controller/
+    resource: ../../src/Controller/*Controller.php
     type: annotation
 
 kernel:

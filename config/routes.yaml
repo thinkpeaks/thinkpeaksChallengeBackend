@@ -2,7 +2,7 @@
 #    path: /
 #    controller: App\Controller\DefaultController::index
 tp_challenge:
-  resource: '@TPChallengeBundle/Controller/ApiController.php'
+  resource: '@TPChallengeBundle/Controller/'
   type: annotation
   prefix: /api
 
