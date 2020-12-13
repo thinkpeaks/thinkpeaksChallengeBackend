@@ -17,6 +17,12 @@ class ScoreCollectionToPlayerDTODataTransformer implements \Symfony\Component\Fo
      */
     public function transform($scores)
     {
+        $countScores = count($scores);
+
+        if(count($scores) < 1) {
+            throw new \InvalidArgumentException('Unable to transform an empty array of "Score"');
+        }
+
         // Find the oldest and newest score to retrieve data from the correct one
         // Newest data are used to define the name of the player
         // Oldest data to define the createdDate of the player
@@ -24,6 +30,11 @@ class ScoreCollectionToPlayerDTODataTransformer implements \Symfony\Component\Fo
         $highscore = $avgScore = 0;
 
         foreach($scores as $score) {
+
+            if(get_class($score) !== Score::class) {
+                throw new \InvalidArgumentException('We can only transform object of type ' . Score::class);
+            }
+
             if(is_null($oldestDate) || $oldestDate > $score->getCreatedAt()) {
                 $oldestDate = $score->getCreatedAt();
                 $oldestScore = $score;
@@ -41,7 +52,7 @@ class ScoreCollectionToPlayerDTODataTransformer implements \Symfony\Component\Fo
             $avgScore += $score->getScore();
         }
 
-        $avgScore = round($avgScore / count($scores));
+        $avgScore = round($avgScore / $countScores);
 
         // Now create the DTO
         $player = new Player();
